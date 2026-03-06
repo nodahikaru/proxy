@@ -27,6 +27,10 @@ async def ip_check_and_log(request: Request, call_next):
 
     return await call_next(request)
 
+@app.get("/")
+async def get():
+    return JSONResponse({"msg": "Welcome to proxy"})
+
 @app.get("/get_token")
 async def get_token(request: Request):
     client_ip = request.client.host
