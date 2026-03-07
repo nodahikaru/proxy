@@ -14,8 +14,7 @@ logging.basicConfig(level=logging.INFO, filename="access.log", format="%(asctime
 
 @app.middleware("http")
 async def ip_check_and_log(request: Request, call_next):
-    #client_ip = request.client.host
-    client_ip = request.headers.get("x-forwarded-for")
+    client_ip = request.client.host
     logging.info(f"IP {client_ip} requested {request.url.path}")
 
     # Allow localhost during development
