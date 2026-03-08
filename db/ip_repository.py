@@ -1,6 +1,8 @@
 from sqlalchemy import text
 from db.database import engine
+from functools import lru_cache
 
+@lru_cache(maxsize=128)
 def get_whitelisted_ips():
     query = text("""
         SELECT ip_address 
@@ -13,6 +15,7 @@ def get_whitelisted_ips():
 
     return [row[0] for row in result]
 
+@lru_cache(maxsize=1024)
 def is_ip_allowed(client_ip : str):
     query = text("""
         SELECT 1
