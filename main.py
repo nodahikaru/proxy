@@ -7,7 +7,7 @@ from middleware.ip_security import ip_security_middleware
 from db.log_repository import access_log
 app = FastAPI()
 
-app.middleware("http")(ip_security_middleware)
+app.middleware("https")(ip_security_middleware)
 
 active_tokens = {}
 
