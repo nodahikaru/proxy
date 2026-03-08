@@ -25,3 +25,4 @@ def is_ip_allowed(client_ip : str):
         result = conn.execute(query, {"ip": client_ip}).fetchone()
     
     return result is not None
+
